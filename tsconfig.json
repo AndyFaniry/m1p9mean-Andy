@@ -1,10 +1,19 @@
 {
     "compilerOptions": {
+      "baseUrl": "./",
       "target": "es6",
       "module": "commonjs",
       "outDir": "dist",
-      "sourceMap": true
+      "sourceMap": true,
+      "experimentalDecorators":true
     },
-    "include": ["api/**/*.ts"],
-    "exclude": ["node_modules", ".vscode"]
+    "angularCompilerOptions": {
+      "enableI18nLegacyMessageIdFormat": false,
+      "strictInjectionParameters": true,
+      "strictInputAccessModifiers": true,
+      "strictTemplates": true
+    },
+    "include": ["api/**/*.ts","src/**/*"],
+    "exclude": ["node_modules", ".vscode"],
+    "files":["api/app/app.ts"]
 }

@@ -12,6 +12,7 @@ export class App {
   }
 
   public init(port: number): Server {
+    this.app.use(express.static('dist/angular-node'));
     this.app.use(passport.initialize());
     this.app.use(bodyParser.json());
     this.app.use(bodyParser.urlencoded({ extended: true }));
@@ -30,7 +31,7 @@ export class App {
       optionsSuccessStatus: 204,
     };
     this.app.use(cors(corsOptions));
-    this.app.use("/api/v1", appRoutes);
+    this.app.use("/api", appRoutes);
   }
 }
 
