@@ -65,6 +65,20 @@ class CommandeController implements ControllerRead, ControllerWrite {
       next,
     );
   }
+  getOrderNotDelivered(req: Request, res: Response, next: NextFunction): void {
+    wrapToSendBackResponse<Commande[] | null>(
+      commandeService.getOrderNotDelivered(req.params.deliveryManId),
+      res,
+      next,
+    );
+  }
+  deliver(req: Request, res: Response, next: NextFunction): void {
+    wrapToSendBackResponse<Commande | null>(
+      commandeService.deliver(req.body),
+      res,
+      next,
+    );
+  }
 }
 
 export const commandeController = new CommandeController();

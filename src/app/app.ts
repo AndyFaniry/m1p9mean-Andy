@@ -1,7 +1,7 @@
 import * as express from "express";
+import * as cors from "cors";
 import { Server } from "http";
 import passport from "./app.authentication";
-import * as helmet from "helmet";
 import * as bodyParser from "body-parser";
 import { appRoutes } from "./app.routes";
 export class App {
@@ -23,6 +23,13 @@ export class App {
   }
 
   private initRoutes() {
+    const corsOptions = {
+      origin: "*",
+      methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+      preflightContinue: false,
+      optionsSuccessStatus: 204,
+    };
+    this.app.use(cors(corsOptions));
     this.app.use("/api/v1", appRoutes);
   }
 }

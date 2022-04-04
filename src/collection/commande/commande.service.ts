@@ -3,10 +3,10 @@ import { Commande } from "./commande.interface";
 import { CommandeModel } from "./commande.schema";
 
 class CommandeService {
-    async getAll(): Promise<Commande[] | null> {
-        return CommandeModel.find().exec();
-    }
-    async create(item: Commande): Promise<Commande> {
+  async getAll(): Promise<Commande[] | null> {
+    return CommandeModel.find().exec();
+  }
+  async create(item: Commande): Promise<Commande> {
     return CommandeModel.create(item);
     }  
     async getById(id: string): Promise<Commande | null> {
@@ -28,6 +28,14 @@ class CommandeService {
     }
     async getByDeliveryMan(id: string): Promise<Commande[] | null> {
         return CommandeModel.find({"delivery_man._id":id}).exec();
+    }
+    async getOrderNotDelivered(id: string): Promise<Commande[] | null> {
+        return CommandeModel.find({"delivery_man._id":id, "etat": false}).exec();
+    }
+    async deliver(item: Commande): Promise<Commande | null> {
+        return CommandeModel
+          .findByIdAndUpdate(item._id, item, { new: true })
+          .exec();
     }
 }
 

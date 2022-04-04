@@ -15,7 +15,7 @@ class CommandeRoute {
         this.router
         .route("/")
         .get(
-            passport.authenticate("jwt", { session: false }),
+            // passport.authenticate("jwt", { session: false }),
             commandeController.getAll.bind(commandeController),
         )
         .post(commandeController.create.bind(commandeController))
@@ -27,7 +27,7 @@ class CommandeRoute {
         this.router
         .route("/:commandeId")
         .get(
-            passport.authenticate("jwt", { session: false }),
+            // passport.authenticate("jwt", { session: false }),
             commandeController.getById.bind(commandeController),
         )
         .put(commandeController.update.bind(commandeController))
@@ -35,17 +35,25 @@ class CommandeRoute {
             // passport.authenticate("jwt", { session: false }),
             commandeController.delete.bind(commandeController),
         );
-        this.router("/client/:clientId").get(
-            passport.authenticate("jwt", { session: false }),
+        this.router.route("/client/:clientId").get(
+            // passport.authenticate("jwt", { session: false }),
             commandeController.getByClient.bind(commandeController),
         );
-        this.router("/resto/:restoId").get(
+        this.router.route("/resto/:restoId").get(
             passport.authenticate("jwt", { session: false }),
             commandeController.getByResto.bind(commandeController),
         );
-        this.router("/delivery/:deliveryId").get(
+        this.router.route("/delivery/:deliveryId").get(
             passport.authenticate("jwt", { session: false }),
             commandeController.getByDeliveryMan.bind(commandeController),
+        );
+        this.router.route("/delivery/:deliveryManId").get(
+          passport.authenticate("jwt", { session: false }),
+          commandeController.getOrderNotDelivered.bind(commandeController),
+        );
+        this.router.route("/deliver").put(
+          passport.authenticate("jwt", { session: false }),
+          commandeController.deliver.bind(commandeController),
         );
     }
 }

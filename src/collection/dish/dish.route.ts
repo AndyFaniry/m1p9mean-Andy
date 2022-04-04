@@ -35,7 +35,7 @@ class DishRoute {
             // passport.authenticate("jwt", { session: false }),
             dishController.delete.bind(dishController),
         );
-        this.router("/resto/:restoId").get(
+        this.router.route("/resto/:restoId").get(
             passport.authenticate("jwt", { session: false }),
             dishController.getByResto.bind(dishController),
         );
