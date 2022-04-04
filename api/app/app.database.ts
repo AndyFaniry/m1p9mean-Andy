@@ -15,13 +15,8 @@ class Database {
         process.exit(1);
       });
 
-    // mongoose.connection.on("connected", () => {
-    //   console.log(`connected to database: ${connexionString}`);
-    // });
-
     mongoose.connection.once("open", () => {
       cb();
-      console.log(`Database opened: ${connexionString}`);
     });
 
     mongoose.connection.on("error", () => {

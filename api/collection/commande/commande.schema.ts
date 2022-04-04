@@ -1,6 +1,6 @@
 import * as mongoose from "mongoose";
 import { Commande } from "./commande.interface";
-import { DishTypeSchema } from "../dish/dish.schema";
+import { PlatTypeSchema } from "../plat/plat.schema";
 import { userSchema } from "../user/user.schema";
 
 export interface CommandeDocument
@@ -8,7 +8,7 @@ export interface CommandeDocument
     mongoose.Document {}
 
 export const DetailTypeSchema = new mongoose.Schema({
-  dish: { type: DishTypeSchema, required: true },
+  plat: { type: PlatTypeSchema, required: true },
   qty: { type: Number, required: true },
 });
 

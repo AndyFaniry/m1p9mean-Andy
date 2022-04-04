@@ -1,8 +1,8 @@
 import { Router } from "express";
 import * as passport from "passport";
-import { dishController } from "./dish.controller";
+import { platController } from "./plat.controller";
 
-class DishRoute {
+class PlatRoute {
     router: Router;
   
     constructor() {
@@ -16,31 +16,31 @@ class DishRoute {
         .route("/")
         .get(
             passport.authenticate("jwt", { session: false }),
-            dishController.getAll.bind(dishController),
+            platController.getAll.bind(platController),
         )
-        .post(dishController.create.bind(dishController))
-        .put(dishController.update.bind(dishController))
+        .post(platController.create.bind(platController))
+        .put(platController.update.bind(platController))
         .delete(
             // passport.authenticate("jwt", { session: false }),
-            dishController.delete.bind(dishController),
+            platController.delete.bind(platController),
         );
         this.router
-        .route("/:dishId")
+        .route("/:platId")
         .get(
             passport.authenticate("jwt", { session: false }),
-            dishController.getById.bind(dishController),
+            platController.getById.bind(platController),
         )
-        .put(dishController.update.bind(dishController))
+        .put(platController.update.bind(platController))
         .delete(
             // passport.authenticate("jwt", { session: false }),
-            dishController.delete.bind(dishController),
+            platController.delete.bind(platController),
         );
         this.router.route("/resto/:restoId").get(
             passport.authenticate("jwt", { session: false }),
-            dishController.getByResto.bind(dishController),
+            platController.getByResto.bind(platController),
         );
     }
 }
-const dishRoute = new DishRoute();
+const platRoute = new PlatRoute();
 
-export const dishRoutes = dishRoute.router;
+export const platRoutes = platRoute.router;

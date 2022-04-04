@@ -24,7 +24,7 @@ class CommandeService {
         return CommandeModel.find({"client._id":id}).exec();
     }
     async getByResto(id: string): Promise<Commande[] | null> {
-        return CommandeModel.find({"detail.dish.user._id":id}).exec();
+        return CommandeModel.find({"detail.plat.user._id":id}).exec();
     }
     async getByDeliveryMan(id: string): Promise<Commande[] | null> {
         return CommandeModel.find({"delivery_man._id":id}).exec();

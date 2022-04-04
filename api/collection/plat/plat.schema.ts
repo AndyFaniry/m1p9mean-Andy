@@ -1,10 +1,10 @@
 import * as mongoose from "mongoose";
-import { DishType } from "./dish.interface";
+import { PlatType } from "./plat.interface";
 import { RestoSchema } from "../resto/resto.schema";
 
-export interface DishDocument extends DishType, mongoose.Document {}
+export interface PlatDocument extends PlatType, mongoose.Document {}
 
-export const DishTypeSchema = new mongoose.Schema({
+export const PlatTypeSchema = new mongoose.Schema({
   resto: { type: RestoSchema, required: true },
   code: { type: String, required: true },
   image: { type: String, required: true },
@@ -15,7 +15,7 @@ export const DishTypeSchema = new mongoose.Schema({
 });
 
 
-export const DishModel = mongoose.model<DishDocument>(
-  "Dish",
-  DishTypeSchema,
+export const PlatModel = mongoose.model<PlatDocument>(
+  "Plat",
+  PlatTypeSchema,
 );

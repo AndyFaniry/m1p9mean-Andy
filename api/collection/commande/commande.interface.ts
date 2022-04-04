@@ -1,8 +1,8 @@
-import { DishType } from "../dish/dish.interface";
+import { PlatType } from "../plat/plat.interface";
 import { User } from "../user/user.interface";
 
 export interface DetailType {
-  dish: DishType;
+  plat: PlatType;
   qty: Number;
 }
 

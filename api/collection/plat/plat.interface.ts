@@ -1,6 +1,6 @@
 import { Resto } from "../resto/resto.interface";
 
-export interface DishType {
+export interface PlatType {
     _id?: any;
     resto: Resto,
     code: String;

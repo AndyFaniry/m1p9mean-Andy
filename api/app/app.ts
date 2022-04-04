@@ -1,5 +1,6 @@
 import * as express from "express";
 import * as cors from "cors";
+import * as path from "path";
 import { Server } from "http";
 import passport from "./app.authentication";
 import * as bodyParser from "body-parser";
@@ -13,6 +14,8 @@ export class App {
 
   public init(port: number): Server {
     this.app.use(express.static('dist/angular-node'));
+    this.app.get('/app/*', (req, res) => res.sendFile(path.join(__dirname, '../../dist/angular-node/index.html')));
+    this.app.get('/app/', (req, res) => res.sendFile(path.join(__dirname, '../../dist/angular-node/index.html')));
     this.app.use(passport.initialize());
     this.app.use(bodyParser.json());
     this.app.use(bodyParser.urlencoded({ extended: true }));

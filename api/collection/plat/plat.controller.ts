@@ -2,54 +2,54 @@ import { NextFunction, Request, Response } from "express";
 import { ControllerRead } from "../../common/controller/controller-read.interface";
 import { ControllerWrite } from "../../common/controller/controller-write.interface";
 import { wrapToSendBackResponse } from "../../shared/wrap-to-send-back-response";
-import { DishType } from "./dish.interface";
-import { dishService } from "./dish.service";
+import { PlatType } from "./plat.interface";
+import { platService } from "./plat.service";
 
-class DishController implements ControllerRead, ControllerWrite {
+class PlatController implements ControllerRead, ControllerWrite {
 
     getAll(req: Request, res: Response, next: NextFunction): void {
-        wrapToSendBackResponse<DishType[] | null>(
-          dishService.getAll(),
+        wrapToSendBackResponse<PlatType[] | null>(
+          platService.getAll(),
           res,
           next,
         );
     }
     getById(req: Request, res: Response, next: NextFunction): void {
-    wrapToSendBackResponse<DishType | null>(
-      dishService.getById(req.params.DishTypeId),
+    wrapToSendBackResponse<PlatType | null>(
+      platService.getById(req.params.PlatTypeId),
       res,
       next,
     );
   }
   create(req: Request, res: Response, next: NextFunction): void {
-    wrapToSendBackResponse<DishType>(
-      dishService.create(req.body),
+    wrapToSendBackResponse<PlatType>(
+      platService.create(req.body),
       res,
       next,
     );
   }
   delete(req: Request, res: Response, next: NextFunction): void {
     wrapToSendBackResponse<boolean>(
-      dishService.delete(req.params.dishId),
+      platService.delete(req.params.platId),
       res,
       next,
     );
   }
 
   update(req: Request, res: Response, next: NextFunction): void {
-    wrapToSendBackResponse<DishType | null>(
-      dishService.update(req.body),
+    wrapToSendBackResponse<PlatType | null>(
+      platService.update(req.body),
       res,
       next,
     );
   }
     getByResto(req: Request, res: Response, next: NextFunction): void {
-      wrapToSendBackResponse<DishType[] | null>(
-        dishService.getByResto(req.params.restoId),
+      wrapToSendBackResponse<PlatType[] | null>(
+        platService.getByResto(req.params.restoId),
         res,
         next,
       );
   }
 }
 
-export const dishController = new DishController();
+export const platController = new PlatController();
