@@ -1,7 +1,7 @@
 import * as dotenv from "dotenv";
 import * as env from "env-var";
 
-dotenv.config({ path: ".env.local" });
+dotenv.config({ path: ".env" });
 
 export const config = {
   server: {
