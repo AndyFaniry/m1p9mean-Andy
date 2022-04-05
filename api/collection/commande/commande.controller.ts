@@ -58,16 +58,16 @@ class CommandeController implements ControllerRead, ControllerWrite {
       next,
     );
   }
-  getByDeliveryMan(req: Request, res: Response, next: NextFunction): void {
+  getByLivreur(req: Request, res: Response, next: NextFunction): void {
     wrapToSendBackResponse<Commande[] | null>(
-      commandeService.getByResto(req.params.deliveryId),
+      commandeService.getByResto(req.params.livreurId),
       res,
       next,
     );
   }
   getOrderNotDelivered(req: Request, res: Response, next: NextFunction): void {
     wrapToSendBackResponse<Commande[] | null>(
-      commandeService.getOrderNotDelivered(req.params.deliveryManId),
+      commandeService.getOrderNotDelivered(req.params.livreurId),
       res,
       next,
     );

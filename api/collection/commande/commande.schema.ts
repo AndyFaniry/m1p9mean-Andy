@@ -17,9 +17,9 @@ export const CommandeSchema = new mongoose.Schema({
   etat: { type: Boolean, required: true },
   detail: { type: [DetailTypeSchema], required: true },
   client: { type: userSchema, required: true },
-  delivery_man: { type: userSchema },
-  delivery_price: { type: Number, required: true },
-  delivery_place: { type: String, required: true },
+  livreur: { type: userSchema },
+  prix_livraison: { type: Number, required: true },
+  lieu_livraison: { type: String, required: true },
 });
 
 export const CommandeModel = mongoose.model<CommandeDocument>(

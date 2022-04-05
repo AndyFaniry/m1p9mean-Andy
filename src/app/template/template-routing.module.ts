@@ -1,17 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FindAllComponent } from './pages/find-all/find-all.component';
+import { InscriptionComponent } from './pages/inscription/inscription.component';
 import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: LoginComponent
-  },
-  {
-    path: 'all',
-    component: FindAllComponent
-  }
+  { path:'', pathMatch: 'full', redirectTo: 'login' },
+  {path:'login',component: LoginComponent},
+  {path:'inscription',component:InscriptionComponent}
 ];
 
 @NgModule({

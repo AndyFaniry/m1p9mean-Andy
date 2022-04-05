@@ -21,7 +21,7 @@ class PlatRoute {
         .post(platController.create.bind(platController))
         .put(platController.update.bind(platController))
         .delete(
-            // passport.authenticate("jwt", { session: false }),
+            passport.authenticate("jwt", { session: false }),
             platController.delete.bind(platController),
         );
         this.router
@@ -32,7 +32,7 @@ class PlatRoute {
         )
         .put(platController.update.bind(platController))
         .delete(
-            // passport.authenticate("jwt", { session: false }),
+            passport.authenticate("jwt", { session: false }),
             platController.delete.bind(platController),
         );
         this.router.route("/resto/:restoId").get(

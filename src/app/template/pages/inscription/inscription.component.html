@@ -1,0 +1,25 @@
+    <section class="vh-100 gradient-custom">
+        <div class="loginAdmin">
+            <div class="loginbox">
+            <h1><i>E-Kaly</i></h1>
+            <h2>INSCRIPTION</h2>
+            <form [formGroup]="form" (submit)="signup()">
+                <div class="textbox">
+                    <input formControlName="firstName" type="text" placeholder="Nom">
+                </div>
+                <div class="textbox">
+                    <input formControlName="lastName" type="text" placeholder="Prénom">
+                </div>
+                <div class="textbox">
+                    <input formControlName="login" type="mail" placeholder="Email">
+                </div>
+                <div class="textbox">
+                    <input formControlName="password" type="password" placeholder="Password">
+                </div>
+            <button class="btn" type="submit">S'inscrire</button>
+            </form>
+            <h5>Déjà un compte?&nbsp;&nbsp;<a routerLink="../login">Se connecter.</a></h5>
+            <div *ngIf="error" class="error">Veuillez remplir les champs.</div>
+            </div>
+        </div> 
+    </section>

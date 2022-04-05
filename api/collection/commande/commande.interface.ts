@@ -12,7 +12,7 @@ export interface Commande {
   etat: Boolean;
   detail: DetailType[];
   client: User;
-  delivery_man: User;
-  delivery_price: Number;
-  delivery_place: String;
+  livreur: User;
+  prix_livraison: Number;
+  lieu_livraison: String;
 }

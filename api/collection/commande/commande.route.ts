@@ -15,43 +15,43 @@ class CommandeRoute {
         this.router
         .route("/")
         .get(
-            // passport.authenticate("jwt", { session: false }),
+            passport.authenticate("jwt", { session: false }),
             commandeController.getAll.bind(commandeController),
         )
         .post(commandeController.create.bind(commandeController))
         .put(commandeController.update.bind(commandeController))
         .delete(
-            // passport.authenticate("jwt", { session: false }),
+            passport.authenticate("jwt", { session: false }),
             commandeController.delete.bind(commandeController),
         );
         this.router
         .route("/:commandeId")
         .get(
-            // passport.authenticate("jwt", { session: false }),
+            passport.authenticate("jwt", { session: false }),
             commandeController.getById.bind(commandeController),
         )
         .put(commandeController.update.bind(commandeController))
         .delete(
-            // passport.authenticate("jwt", { session: false }),
+            passport.authenticate("jwt", { session: false }),
             commandeController.delete.bind(commandeController),
         );
         this.router.route("/client/:clientId").get(
-            // passport.authenticate("jwt", { session: false }),
+            passport.authenticate("jwt", { session: false }),
             commandeController.getByClient.bind(commandeController),
         );
         this.router.route("/resto/:restoId").get(
             passport.authenticate("jwt", { session: false }),
             commandeController.getByResto.bind(commandeController),
         );
-        this.router.route("/delivery/:deliveryId").get(
+        this.router.route("/livreur/:livreurId").get(
             passport.authenticate("jwt", { session: false }),
-            commandeController.getByDeliveryMan.bind(commandeController),
+            commandeController.getByLivreur.bind(commandeController),
         );
-        this.router.route("/delivery/:deliveryManId").get(
+        this.router.route("/livreur/0/:livreurId").get(
           passport.authenticate("jwt", { session: false }),
           commandeController.getOrderNotDelivered.bind(commandeController),
         );
-        this.router.route("/deliver").put(
+        this.router.route("/livreur").put(
           passport.authenticate("jwt", { session: false }),
           commandeController.deliver.bind(commandeController),
         );

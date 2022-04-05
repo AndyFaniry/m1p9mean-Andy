@@ -26,11 +26,11 @@ class CommandeService {
     async getByResto(id: string): Promise<Commande[] | null> {
         return CommandeModel.find({"detail.plat.user._id":id}).exec();
     }
-    async getByDeliveryMan(id: string): Promise<Commande[] | null> {
-        return CommandeModel.find({"delivery_man._id":id}).exec();
+    async getByLivreur(id: string): Promise<Commande[] | null> {
+        return CommandeModel.find({"livreur._id":id}).exec();
     }
     async getOrderNotDelivered(id: string): Promise<Commande[] | null> {
-        return CommandeModel.find({"delivery_man._id":id, "etat": false}).exec();
+        return CommandeModel.find({"livreur._id":id, "etat": false}).exec();
     }
     async deliver(item: Commande): Promise<Commande | null> {
         return CommandeModel
