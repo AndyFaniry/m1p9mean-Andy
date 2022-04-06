@@ -5,18 +5,26 @@ import { LoginComponent } from './pages/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ApiModule } from '../api/api.module';
 import { InscriptionComponent } from './pages/inscription/inscription.component';
-
+import { SpinnerComponent } from './pages/spinner/spinner.component';
+import { NavbarComponent } from './pages/navbar/navbar.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { NotfoundComponent } from './pages/notfound/notfound.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
     InscriptionComponent,
+    SpinnerComponent,
+    NavbarComponent,
+    AdminComponent,
+    NotfoundComponent,
   ],
   imports: [
     CommonModule,
     TemplateRoutingModule,
     ReactiveFormsModule,
-    ApiModule
+    ApiModule,
+   
   ]
 })
 export class TemplateModule { }
