@@ -9,6 +9,7 @@ import { SpinnerComponent } from './pages/spinner/spinner.component';
 import { NavbarComponent } from './pages/navbar/navbar.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
+import { FooterComponent } from './pages/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { NotfoundComponent } from './pages/notfound/notfound.component';
     NavbarComponent,
     AdminComponent,
     NotfoundComponent,
+    FooterComponent,
   ],
   imports: [
     CommonModule,
