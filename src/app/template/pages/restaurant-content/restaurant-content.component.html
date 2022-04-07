@@ -1,6 +1,5 @@
- <!--/.Liste--><div class="row-fax">
-    <app-sidebar ></app-sidebar>
-    <div class="span9-fax">
+<!--/.Liste-->
+    <div class="span9-fax" *ngIf="false">
         <div class="content-fax">
             <div class="module-fax">
                 <div class="module-fax-head">
@@ -29,5 +28,55 @@
                 </div>
             </div>
         </div>
-    </div><!--/Liste-->
+    </div>
+<!--/Liste-->
+<!--/.formulaire-->
+    <div class="span9-fax">
+      <div class="content-fax">
+        <div class="module-fax">
+          <div class="module-fax-head">
+            <h3>Forms Restaurant</h3>
+          </div>
+          <div class="module-fax-body">
+            <form action="#" th:if="${type == 'update'}" th:action="@{/admin/updateInfo/{id}(id=${info.idInformation})}" th:object="${info}" method="post" class="form-horizontal-fax row-fax-fluid" enctype="multipart/form-data">
+              <div class="control-fax-group">
+                <label class="control-fax-label" for="basicinput">Titre:</label>
+                <div class="controls-fax">
+                  <input type="text" id="titre" placeholder="Titre" class="span8-fax" th:field="*{titre}" required>
+                </div>
+              </div>
+              <div class="control-fax-group">
+                <label class="control-fax-label" for="basicinput">Mots Cle:</label>
+                <div class="controls-fax">
+                  <input type="text" id="motsCle" placeholder="Mots Cle" class="span8-fax" th:field="*{motsCle}" required>
+                  <span class="text-info">Séparer par virgule</span>
+                </div>
+              </div>
+              <div class="control-fax-group">
+                <label class="control-fax-label" for="basicinput">Categorie:</label>
+                <div class="controls-fax">
+                  <select tabindex="1" placeholder="Categorie" class="span8-fax" th:field="*{idCategorie}" id="idCategorie" required>
+                    <option th:each="categ : ${categ}" th:value="${categ.idCategorie}" th:text="${categ.categorie}" ></option>
+                  </select>
+                </div>
+              </div>
+              <div class="control-fax-group">
+                <label class="control-fax-label" for="basicinput">Information:</label>
+                <div class="controls-fax">
+                  <textarea class="span8-fax" rows="10" th:field="*{information}" id="information"></textarea>
+                </div>
+              </div>
+              <div class="control-fax-group">
+                <div class="controls-fax" >
+                  <button  class="btn btn-info">Modifier</button>
+                  &nbsp;&nbsp;&nbsp;
+                  <button  class="btn btn-danger">Annuler</button>
+                </div>
+              </div>
+            </form>
+            
+          </div>
+        </div>
+      </div>
 </div>
+<!--/.formulaire-->

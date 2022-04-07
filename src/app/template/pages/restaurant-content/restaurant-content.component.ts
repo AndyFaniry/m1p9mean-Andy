@@ -10,6 +10,9 @@ import { RestaurantService } from 'src/app/api/services/restaurant/restaurant.se
 export class RestaurantContentComponent implements OnInit {
 
   public restos: Resto[] ;
+  public liste: boolean = true;
+  public formulaire: boolean = false;
+  public update: boolean = false;
   public token: string = localStorage.getItem('token');
   constructor(private resto: RestaurantService) { }
 
@@ -24,5 +27,16 @@ export class RestaurantContentComponent implements OnInit {
       },
       error: (err) => {console.log(err);}
     });
+  }
+
+  public clickAjout(){
+    this.liste = false;
+    this.formulaire = true;
+  }
+
+  public clickUpdate(){
+    this.liste = false;
+    this.formulaire = true;
+    this.update = true;
   }
 }
