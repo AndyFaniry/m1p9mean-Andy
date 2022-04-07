@@ -1,0 +1,33 @@
+ <!--/.Liste--><div class="row-fax">
+    <app-sidebar ></app-sidebar>
+    <div class="span9-fax">
+        <div class="content-fax">
+            <div class="module-fax">
+                <div class="module-fax-head">
+                    <h3>Restaurant
+                    <a  class="btn btn-success" style="float: right;">Ajouter</a></h3>
+                </div>
+                <div class="module-fax-body">
+                    <table class="table table-striped align-middle">
+                      <thead>
+                        <tr>
+                          <th >Nom</th>
+                          <th >Adresse</th>
+                          <th >% vente</th>
+                          <th >Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let resto of restos ">
+                          <td >{{resto.user.lastName}}</td>
+                          <td >{{resto.address}}</td>
+                          <td >{{resto.pourcentage}}%</td>
+                          <td width="20%">&nbsp;&nbsp;<a class="btn btn-warning"><i class="menu-icon icon-book"></i></a>&nbsp;&nbsp;<a class="btn btn-info"><i class="menu-icon icon-edit"></i></a>&nbsp;&nbsp;<a  class="btn btn-danger"><i class="menu-icon icon-trash"></i></a></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div><!--/Liste-->
+</div>

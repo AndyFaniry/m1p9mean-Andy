@@ -10,6 +10,9 @@ import { NavbarComponent } from './pages/navbar/navbar.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
 import { FooterComponent } from './pages/footer/footer.component';
+import { SidebarComponent } from './pages/sidebar/sidebar.component';
+import { RestaurantComponent } from './pages/restaurant/restaurant.component';
+import { RestaurantContentComponent } from './pages/restaurant-content/restaurant-content.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +23,9 @@ import { FooterComponent } from './pages/footer/footer.component';
     AdminComponent,
     NotfoundComponent,
     FooterComponent,
+    SidebarComponent,
+    RestaurantComponent,
+    RestaurantContentComponent,
   ],
   imports: [
     CommonModule,

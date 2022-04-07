@@ -24,7 +24,7 @@ export class LoginComponent {
     this.user.login(this.form.value)
     .subscribe({
       next: (res) => {
-        localStorage.setItem('token-'+res.user.userType.name,res.token);
+        localStorage.setItem('token',res.token);
         localStorage.setItem('user',JSON.stringify(res.user));
         let val = this.user.checkProfi(res.user);
         this.spinner=false;
