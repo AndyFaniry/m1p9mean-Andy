@@ -24,9 +24,18 @@ class UserService {
     return userModel.deleteOne({ _id: id }).then(() => true);
   }
 
+  async deleteByLogin(login: String): Promise<boolean> {
+    return userModel.deleteOne({ login: login }).then(() => true);
+  }
+
   async update(item: User): Promise<User | null> {
     return userModel
       .findByIdAndUpdate(item._id, item, { new: true })
+      .exec();
+  }
+  async updateByLogin(item: User): Promise<User | null> {
+    return userModel
+      .findOneAndUpdate({login: item.login}, item, { new: true })
       .exec();
   }
 

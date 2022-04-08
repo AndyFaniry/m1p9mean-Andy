@@ -20,7 +20,8 @@ class RestoRoute {
       .post(
         passport.authenticate("jwt", { session: false }),
         restoController.create.bind(restoController),
-      );
+      )
+      ;
     this.router
       .route("/:restoId")
       .get(
@@ -30,11 +31,11 @@ class RestoRoute {
       .put(
         passport.authenticate("jwt", { session: false }),
         restoController.update.bind(restoController),
-      )
-      .delete(
-        passport.authenticate("jwt", { session: false }),
-        restoController.delete.bind(restoController),
       );
+    this.router.route("/:restoId").delete(
+      passport.authenticate("jwt", { session: false }),
+      restoController.delete.bind(restoController),
+    )
   }
 }
 const restoRoute = new RestoRoute();

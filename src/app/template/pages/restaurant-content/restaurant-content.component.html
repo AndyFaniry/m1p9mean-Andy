@@ -1,10 +1,10 @@
 <!--/.Liste-->
-    <div class="span9-fax" *ngIf="false">
+    <div class="span9-fax" *ngIf="liste">
         <div class="content-fax">
             <div class="module-fax">
                 <div class="module-fax-head">
                     <h3>Restaurant
-                    <a  class="btn btn-success" style="float: right;">Ajouter</a></h3>
+                    <a  class="btn btn-success" style="float: right;" (click)="clickButton(null)">Ajouter</a></h3>
                 </div>
                 <div class="module-fax-body">
                     <table class="table table-striped align-middle">
@@ -21,7 +21,7 @@
                           <td >{{resto.user.lastName}}</td>
                           <td >{{resto.address}}</td>
                           <td >{{resto.pourcentage}}%</td>
-                          <td width="20%">&nbsp;&nbsp;<a class="btn btn-warning"><i class="menu-icon icon-book"></i></a>&nbsp;&nbsp;<a class="btn btn-info"><i class="menu-icon icon-edit"></i></a>&nbsp;&nbsp;<a  class="btn btn-danger"><i class="menu-icon icon-trash"></i></a></td>
+                          <td width="20%">&nbsp;&nbsp;<a class="btn btn-warning"><i class="menu-icon icon-book"></i></a>&nbsp;&nbsp;<a class="btn btn-info" (click)="clickButton(resto._id)"><i class="menu-icon icon-edit"></i></a>&nbsp;&nbsp;<a  class="btn btn-danger" (click)="deleteResto(resto._id,resto.user._id)"><i class="menu-icon icon-trash"></i></a></td>
                         </tr>
                       </tbody>
                     </table>
@@ -31,46 +31,50 @@
     </div>
 <!--/Liste-->
 <!--/.formulaire-->
-    <div class="span9-fax">
+    <div class="span9-fax" *ngIf="formulaire">
       <div class="content-fax">
         <div class="module-fax">
           <div class="module-fax-head">
-            <h3>Forms Restaurant</h3>
+            <h3 *ngIf="!isAddMode">Modifier Restaurant</h3>
+            <h3 *ngIf="isAddMode">Ajouter Restaurant</h3>
           </div>
           <div class="module-fax-body">
-            <form action="#" th:if="${type == 'update'}" th:action="@{/admin/updateInfo/{id}(id=${info.idInformation})}" th:object="${info}" method="post" class="form-horizontal-fax row-fax-fluid" enctype="multipart/form-data">
+            <form [formGroup]="form"  (submit)="submitForms()" class="form-horizontal-fax row-fax-fluid" enctype="multipart/form-data">
               <div class="control-fax-group">
-                <label class="control-fax-label" for="basicinput">Titre:</label>
+                <label class="control-fax-label" for="basicinput">Nom:</label>
                 <div class="controls-fax">
-                  <input type="text" id="titre" placeholder="Titre" class="span8-fax" th:field="*{titre}" required>
+                  <input type="text" formControlName="lastName" placeholder="Nom" class="span8-fax" >
+                  &nbsp;&nbsp;&nbsp;<span *ngIf="submitted && form.controls.lastName.errors" class="text-danger">Nom requis</span>
                 </div>
               </div>
               <div class="control-fax-group">
-                <label class="control-fax-label" for="basicinput">Mots Cle:</label>
+                <label class="control-fax-label" for="basicinput">Adresse</label>
                 <div class="controls-fax">
-                  <input type="text" id="motsCle" placeholder="Mots Cle" class="span8-fax" th:field="*{motsCle}" required>
-                  <span class="text-info">Séparer par virgule</span>
+                  <input type="text" formControlName="address" placeholder="Adresse" class="span8-fax" >
+                    &nbsp;&nbsp;&nbsp;<span *ngIf="submitted && form.controls.address.errors" class="text-danger">Adresse requis</span> 
                 </div>
               </div>
               <div class="control-fax-group">
-                <label class="control-fax-label" for="basicinput">Categorie:</label>
+                <label class="control-fax-label" for="basicinput">Email:</label>
                 <div class="controls-fax">
-                  <select tabindex="1" placeholder="Categorie" class="span8-fax" th:field="*{idCategorie}" id="idCategorie" required>
-                    <option th:each="categ : ${categ}" th:value="${categ.idCategorie}" th:text="${categ.categorie}" ></option>
-                  </select>
+                  <input type="email" formControlName="login" placeholder="Email" class="span8-fax" >
+                  &nbsp;&nbsp;&nbsp;<span *ngIf="submitted && form.controls.login.errors" class="text-danger">Email invalide</span>
+                  &nbsp;&nbsp;&nbsp;<span *ngIf="error" class="text-danger">Email invalide</span>
                 </div>
               </div>
               <div class="control-fax-group">
-                <label class="control-fax-label" for="basicinput">Information:</label>
+                <label class="control-fax-label" for="basicinput">Pourcentage en vente:</label>
                 <div class="controls-fax">
-                  <textarea class="span8-fax" rows="10" th:field="*{information}" id="information"></textarea>
+                  <input type="number" formControlName="pourcentage" placeholder="%" class="span8-fax" >
+                  &nbsp;&nbsp;&nbsp;<span *ngIf="submitted && form.controls.pourcentage.errors" class="text-danger">Pourcentage requis</span>
                 </div>
               </div>
               <div class="control-fax-group">
                 <div class="controls-fax" >
-                  <button  class="btn btn-info">Modifier</button>
+                  <button  *ngIf="!isAddMode" type="submit" class="btn btn-info">Modifier</button>
+                  <button  *ngIf="isAddMode" type="submit" class="btn btn-success">Enregistrer</button>
                   &nbsp;&nbsp;&nbsp;
-                  <button  class="btn btn-danger">Annuler</button>
+                  <a  class="btn btn-danger" (click)="annuler()">Annuler</a>
                 </div>
               </div>
             </form>
@@ -80,3 +84,6 @@
       </div>
 </div>
 <!--/.formulaire-->
+<!--/.LOADING-->
+  <app-spinner [showSpinner]="loading"></app-spinner>
+<!--/.LOADING-->

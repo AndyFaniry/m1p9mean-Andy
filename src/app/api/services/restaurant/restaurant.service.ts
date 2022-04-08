@@ -25,8 +25,31 @@ export class RestaurantService {
       return resp.data;
     }))
   }
-  public find(){
-    return this.http.get(`${this.url}/resto/`).pipe(map((resp:any) => {
+
+  public findOne(token,id): Observable<Resto>{
+    this.options.headers.Authorization='Bearer '+token;
+    return this.http.get(`${this.url}/resto/${id}`,this.options).pipe(map((resp:any) => {
+      return resp.data;
+    }))
+  }
+
+  public create(resto: Resto,token): Observable<Resto>{
+    this.options.headers.Authorization='Bearer '+token;
+    return this.http.post(`${this.url}/resto/`,resto,this.options).pipe(map((resp:any) => {
+      return resp.data;
+    }))
+  }
+
+  public update(resto: Resto,token): Observable<Resto>{
+    this.options.headers.Authorization='Bearer '+token;
+    return this.http.put(`${this.url}/resto/${resto._id}`,resto,this.options).pipe(map((resp:any) => {
+      return resp.data;
+    }))
+  }
+
+  public delete(idResto,token): Observable<boolean>{
+    this.options.headers.Authorization='Bearer '+token;
+    return this.http.delete(`${this.url}/resto/${idResto}`,this.options).pipe(map((resp:any) => {
       return resp.data;
     }))
   }
