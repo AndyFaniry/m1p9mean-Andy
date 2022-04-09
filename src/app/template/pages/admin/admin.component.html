@@ -3,7 +3,8 @@
     <div class="container-fax">
       <div class="row-fax">
         <app-sidebar ></app-sidebar>
-        <app-restaurant-content></app-restaurant-content>
+        <app-restaurant-content *ngIf="resto" ></app-restaurant-content>
+        <app-livreur-content *ngIf="livreur" ></app-livreur-content>
       </div>
    </div>
 </section>

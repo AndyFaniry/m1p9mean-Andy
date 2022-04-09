@@ -13,6 +13,13 @@ class UserController implements ControllerRead, ControllerWrite {
       next,
     );
   }
+  getAllLivreur(req: Request, res: Response, next: NextFunction): void {
+    wrapToSendBackResponse<User[] | null>(
+      userService.getAllLivreur(),
+      res,
+      next,
+    );
+  }
 
   getById(req: Request, res: Response, next: NextFunction): void {
     wrapToSendBackResponse<User | null>(

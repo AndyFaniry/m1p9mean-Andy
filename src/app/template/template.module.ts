@@ -13,6 +13,7 @@ import { FooterComponent } from './pages/footer/footer.component';
 import { SidebarComponent } from './pages/sidebar/sidebar.component';
 import { RestaurantComponent } from './pages/restaurant/restaurant.component';
 import { RestaurantContentComponent } from './pages/restaurant-content/restaurant-content.component';
+import { LivreurContentComponent } from './pages/livreur-content/livreur-content.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { RestaurantContentComponent } from './pages/restaurant-content/restauran
     SidebarComponent,
     RestaurantComponent,
     RestaurantContentComponent,
+    LivreurContentComponent,
   ],
   imports: [
     CommonModule,

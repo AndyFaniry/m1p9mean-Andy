@@ -12,7 +12,7 @@ class RestoService {
         return RestoModel.find().exec();
     }
     async create(item: Resto): Promise<Resto> {
-        var mdp = 'restaurant@'+item.user.lastName;
+        var mdp = 'restaurant@'+(item.user.lastName).split(" ",1);
         item.user.password = await bcrypt.hash(mdp, 10);
         const resto = (await RestoModel.create(item)) as Resto;
         await this.sendSignupSuccessMail(resto.user,mdp);

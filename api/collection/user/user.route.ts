@@ -33,10 +33,23 @@ class UserRouter {
         passport.authenticate("jwt", { session: false }),
         userController.getAll.bind(userController),
       )
-      .put(userController.update.bind(userController))
+      .post(
+        passport.authenticate("jwt", { session: false }),
+        userController.create.bind(userController)
+        )
+      .put(
+        passport.authenticate("jwt", { session: false }),
+        userController.update.bind(userController)
+        )
       .delete(
         passport.authenticate("jwt", { session: false }),
         userController.delete.bind(userController),
+      );
+      this.router
+      .route("/livreur")
+      .get(
+        passport.authenticate("jwt", { session: false }),
+        userController.getAllLivreur.bind(userController),
       );
     this.router
       .route("/:userId")
@@ -49,6 +62,7 @@ class UserRouter {
         passport.authenticate("jwt", { session: false }),
         userController.delete.bind(userController),
       );
+      
   }
 }
 

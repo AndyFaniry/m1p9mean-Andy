@@ -10,7 +10,9 @@ class UserService {
   async getAll(): Promise<User[] | null> {
     return userModel.find().exec();
   }
-
+  async getAllLivreur(): Promise<User[] | null> {
+    return userModel.find({"userType.name": 'livreur'}).exec();
+  }
   async create(item: User): Promise<User> {
     // delete item._id;
     return userModel.create(item);

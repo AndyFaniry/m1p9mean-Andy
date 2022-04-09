@@ -4,7 +4,7 @@
                 <li><a><b><i class="menu-icon">{{entet}}</i></b></a></li>
             </ul>
             <ul class="widget-fax widget-fax-menu unstyled">
-                <li *ngFor="let menu of menus "><a href="{{menu.url}}"><i class="menu-icon {{menu.icon}}"></i>{{menu.libelle}}</a></li>       
+                <li *ngFor="let menu of menus "><a role="button" href="{{menu.url}}" routerLinkActive="active"><i class="menu-icon {{menu.icon}}"></i>{{menu.libelle}}</a></li>       
             </ul>
             <ul class="widget-fax widget-fax-menu unstyled">
                 <li><a role="button" (click) = "deconnect()"><i class="menu-icon icon-signout"></i>Se déconnecter </a></li>

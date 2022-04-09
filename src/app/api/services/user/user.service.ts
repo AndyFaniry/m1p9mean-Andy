@@ -10,7 +10,13 @@ import { environment } from 'src/environments/environment';
 })
 export class UserService {
   private url: string = environment.url
-  
+  private  options = {
+    headers: {
+      'Content-Type' : 'application/json',
+      'Access-Control-Allow-Origin' : '*',
+      'Authorization' : '',
+    }
+  };
   constructor(private http: HttpClient) { }
 
   public login(user: User): Observable<AuthenticationResponse>{ 
@@ -45,6 +51,38 @@ export class UserService {
   }
   public find(){
     return this.http.get(`${this.url}/user/`).pipe(map((resp:any) => {
+      return resp.data;
+    }))
+  }
+  public findAllLivreur(token): Observable<User[]>{
+    this.options.headers.Authorization='Bearer '+token;
+    return this.http.get(`${this.url}/user/livreur`,this.options).pipe(map((resp:any) => {
+      return resp.data;
+    }))
+  }
+  public findOne(token,id): Observable<User>{
+    this.options.headers.Authorization='Bearer '+token;
+    return this.http.get(`${this.url}/user/${id}`,this.options).pipe(map((resp:any) => {
+      return resp.data;
+    }))
+  }
+  public create(user: User,token): Observable<User>{
+    this.options.headers.Authorization='Bearer '+token;
+    return this.http.post(`${this.url}/user/`,user,this.options).pipe(map((resp:any) => {
+      return resp.data;
+    }))
+  }
+
+  public update(user: User,token): Observable<User>{
+    this.options.headers.Authorization='Bearer '+token;
+    return this.http.put(`${this.url}/user`,user,this.options).pipe(map((resp:any) => {
+      return resp.data;
+    }))
+  }
+
+  public delete(iduser,token): Observable<boolean>{
+    this.options.headers.Authorization='Bearer '+token;
+    return this.http.delete(`${this.url}/user/${iduser}`,this.options).pipe(map((resp:any) => {
       return resp.data;
     }))
   }

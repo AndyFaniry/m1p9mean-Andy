@@ -10,11 +10,12 @@ import { User } from 'api/collection/user/user.interface';
 export class SidebarComponent implements OnInit {
  
   public user: User ;
+  public restoContent: boolean = false;
   public admin: any=[
-    {'url':'app/admin','icon':'icon-home','libelle':'Restaurants'},
-    {'url':'','icon':'icon-user','libelle':'Livreurs'},
-    {'url':'','icon':'icon-calendar','libelle':'Commandes'},
-    {'url':'','icon':'icon-money','libelle':'Bénéfices'},
+    {'url':'app/admin/resto','icon':'icon-home','libelle':'Restaurants'},
+    {'url':'app/admin/livreur','icon':'icon-user','libelle':'Livreurs'},
+    {'url':'app/admin/commande','icon':'icon-calendar','libelle':'Commandes'},
+    {'url':'app/admin/benefice','icon':'icon-money','libelle':'Bénéfices'},
   ];
   public client: any=[
     {'url':'','icon':'','libelle':''},
@@ -54,5 +55,9 @@ export class SidebarComponent implements OnInit {
       this.menus = this.livreur;
       this.entet = "Livreur: "+this.user.lastName+" "+this.user.firstName;
     }
+  }
+  public clickResto(){
+    this.restoContent = true;
+    // this.livreur =false;
   }
 }
