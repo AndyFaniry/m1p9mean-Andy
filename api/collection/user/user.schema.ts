@@ -11,7 +11,7 @@ export const userSchema = new mongoose.Schema({
   userType: { type: userTypeSchema },
   firstName: { type: String, required: false },
   lastName: { type: String, required: false },
-  login: { type: String, required: true, unique:true },
+  login: { type: String, required: true },
   password: { type: String, required: false },
 });
 

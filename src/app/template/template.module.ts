@@ -14,6 +14,9 @@ import { SidebarComponent } from './pages/sidebar/sidebar.component';
 import { RestaurantComponent } from './pages/restaurant/restaurant.component';
 import { RestaurantContentComponent } from './pages/restaurant-content/restaurant-content.component';
 import { LivreurContentComponent } from './pages/livreur-content/livreur-content.component';
+import { PlatContentComponent } from './pages/plat-content/plat-content.component';
+import { CommandeContentComponent } from './pages/commande-content/commande-content.component';
+import { ClientComponent } from './pages/client/client.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,9 @@ import { LivreurContentComponent } from './pages/livreur-content/livreur-content
     RestaurantComponent,
     RestaurantContentComponent,
     LivreurContentComponent,
+    PlatContentComponent,
+    CommandeContentComponent,
+    ClientComponent,
   ],
   imports: [
     CommonModule,

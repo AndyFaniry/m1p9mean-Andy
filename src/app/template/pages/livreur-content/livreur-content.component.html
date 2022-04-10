@@ -21,7 +21,7 @@
                       <td >{{livreur.lastName}}</td>
                       <td >{{livreur.firstName}}</td>
                       <td >{{livreur.login}}</td>
-                      <td width="20%">&nbsp;&nbsp;<a class="btn btn-warning" (click)="infoLivreur(livreur._id)"><i class="menu-icon icon-book"></i></a>&nbsp;&nbsp;<a class="btn btn-info" (click)="clickButton(livreur._id)"><i class="menu-icon icon-edit"></i></a>&nbsp;&nbsp;<a  class="btn btn-danger" (click)="deleteLivreur(livreur._id)"><i class="menu-icon icon-trash"></i></a></td>
+                      <td ><a class="btn btn-warning" (click)="infoLivreur(livreur._id)"><i class="menu-icon icon-book"></i></a><a class="btn btn-info" (click)="clickButton(livreur._id)"><i class="menu-icon icon-edit"></i></a><a  class="btn btn-danger" (click)="deleteLivreur(livreur._id)"><i class="menu-icon icon-trash"></i></a></td>
                     </tr>
                   </tbody>
                 </table>
@@ -44,21 +44,21 @@
           <div class="control-fax-group">
             <label class="control-fax-label" for="basicinput">Nom:</label>
             <div class="controls-fax">
-              <input type="text" formControlName="lastName" placeholder="Nom" class="span8-fax" [attr.disabled]="info? true : null">
+              <input type="text" formControlName="lastName" placeholder="Nom" class="span8-fax" style="width: 350px;" [attr.disabled]="info? true : null">
               &nbsp;&nbsp;&nbsp;<span *ngIf="submitted && form.controls.lastName.errors" class="text-danger">Nom requis</span>
             </div>
           </div>
           <div class="control-fax-group">
             <label class="control-fax-label" for="basicinput">Prénom</label>
             <div class="controls-fax">
-              <input type="text" formControlName="firstName" placeholder="Prénom" class="span8-fax" [attr.disabled]="info? true : null">
+              <input type="text" formControlName="firstName" placeholder="Prénom" class="span8-fax" style="width: 350px;" [attr.disabled]="info? true : null">
                 &nbsp;&nbsp;&nbsp;<span *ngIf="submitted && form.controls.firstName.errors" class="text-danger">Prénom requis</span> 
             </div>
           </div>
           <div class="control-fax-group">
             <label class="control-fax-label" for="basicinput">Email:</label>
             <div class="controls-fax">
-              <input type="email" formControlName="login" placeholder="Email" class="span8-fax" [attr.disabled]="info? true : null">
+              <input type="email" formControlName="login" placeholder="Email" class="span8-fax" style="width: 350px;" [attr.disabled]="info? true : null">
               &nbsp;&nbsp;&nbsp;<span *ngIf="submitted && form.controls.login.errors" class="text-danger">Email invalide ou déjà utilisé</span>
               &nbsp;&nbsp;&nbsp;<span *ngIf="error" class="text-danger">Email invalide</span>
             </div>

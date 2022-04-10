@@ -18,10 +18,13 @@ export class SidebarComponent implements OnInit {
     {'url':'app/admin/benefice','icon':'icon-money','libelle':'Bénéfices'},
   ];
   public client: any=[
-    {'url':'','icon':'','libelle':''},
+    {'url':'app/client/plat','icon':'icon-book','libelle':'Plats'},
+    {'url':'app/client/commande','icon':'icon-calendar','libelle':'Commandes'},
   ];
   public resto: any=[
-    {'url':'','icon':'','libelle':''},
+    {'url':'app/restaurant/plat','icon':'icon-book','libelle':'Plats'},
+    {'url':'app/restaurant/commande','icon':'icon-calendar','libelle':'Commandes'},
+    {'url':'app/restaurant/benefice','icon':'icon-money','libelle':'Bénéfices'},
   ];
   public livreur: any=[
     {'url':'','icon':'','libelle':''},
@@ -43,9 +46,9 @@ export class SidebarComponent implements OnInit {
       this.menus = this.admin;
       this.entet = "Administrateur E-Kaly";
     }
-    if(this.user.userType.name === 'resto'){
+    if(this.user.userType.name === 'restaurant'){
       this.menus = this.resto;
-      this.entet = this.user.firstName;
+      this.entet = "Restaurant: "+ this.user.lastName;
     }
     if(this.user.userType.name === 'client'){
       this.menus = this.client;
@@ -55,9 +58,5 @@ export class SidebarComponent implements OnInit {
       this.menus = this.livreur;
       this.entet = "Livreur: "+this.user.lastName+" "+this.user.firstName;
     }
-  }
-  public clickResto(){
-    this.restoContent = true;
-    // this.livreur =false;
   }
 }

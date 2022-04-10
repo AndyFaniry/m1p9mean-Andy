@@ -22,7 +22,10 @@ class PlatService {
           .exec();
     }
     async getByResto(id: string): Promise<PlatType[] | null> {
-        return PlatModel.find({"resto._id":id}).exec();
+        return PlatModel.find({"resto.lastName":id}).exec();
+    }
+    async getVisible(): Promise<PlatType[] | null> {
+        return PlatModel.find({visibility:true}).exec();
     }
 }
 

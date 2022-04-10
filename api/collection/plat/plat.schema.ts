@@ -7,7 +7,6 @@ export interface PlatDocument extends PlatType, mongoose.Document {}
 export const PlatTypeSchema = new mongoose.Schema({
   resto: { type: RestoSchema, required: true },
   code: { type: String, required: true },
-  image: { type: String, required: true },
   name: { type: String, required: true },
   pR: { type: Number, required: true },
   pV: { type: Number, required: true },

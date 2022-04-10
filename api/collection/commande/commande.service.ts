@@ -20,14 +20,14 @@ class CommandeService {
           .findByIdAndUpdate(item._id, item, { new: true })
           .exec();
     }
-    async getByClient(id: string): Promise<Commande[] | null> {
-        return CommandeModel.find({"client._id":id}).exec();
+    async getByClient(login: string): Promise<Commande[] | null> {
+        return CommandeModel.find({"client.login":login}).exec();
     }
-    async getByResto(id: string): Promise<Commande[] | null> {
-        return CommandeModel.find({"detail.plat.user._id":id}).exec();
+    async getByResto(login: string): Promise<Commande[] | null> {
+        return CommandeModel.find({"detail.plat.user.login":login,"etat":{$in:["commande","en cours"]}}).exec();
     }
-    async getByLivreur(id: string): Promise<Commande[] | null> {
-        return CommandeModel.find({"livreur._id":id}).exec();
+    async getByLivreur(login: string): Promise<Commande[] | null> {
+        return CommandeModel.find({"livreur.login":login}).exec();
     }
     async getOrderNotDelivered(id: string): Promise<Commande[] | null> {
         return CommandeModel.find({"livreur._id":id, "etat": false}).exec();

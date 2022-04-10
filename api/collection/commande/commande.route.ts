@@ -24,17 +24,6 @@ class CommandeRoute {
             passport.authenticate("jwt", { session: false }),
             commandeController.delete.bind(commandeController),
         );
-        this.router
-        .route("/:commandeId")
-        .get(
-            passport.authenticate("jwt", { session: false }),
-            commandeController.getById.bind(commandeController),
-        )
-        .put(commandeController.update.bind(commandeController))
-        .delete(
-            passport.authenticate("jwt", { session: false }),
-            commandeController.delete.bind(commandeController),
-        );
         this.router.route("/client/:clientId").get(
             passport.authenticate("jwt", { session: false }),
             commandeController.getByClient.bind(commandeController),
@@ -47,13 +36,16 @@ class CommandeRoute {
             passport.authenticate("jwt", { session: false }),
             commandeController.getByLivreur.bind(commandeController),
         );
-        this.router.route("/livreur/0/:livreurId").get(
-          passport.authenticate("jwt", { session: false }),
-          commandeController.getOrderNotDelivered.bind(commandeController),
-        );
-        this.router.route("/livreur").put(
-          passport.authenticate("jwt", { session: false }),
-          commandeController.deliver.bind(commandeController),
+        this.router
+        .route("/:commandeId")
+        .get(
+            passport.authenticate("jwt", { session: false }),
+            commandeController.getById.bind(commandeController),
+        )
+        .put(commandeController.update.bind(commandeController))
+        .delete(
+            passport.authenticate("jwt", { session: false }),
+            commandeController.delete.bind(commandeController),
         );
     }
 }

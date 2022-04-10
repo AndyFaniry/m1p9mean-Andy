@@ -1,0 +1,143 @@
+<!--/.restaurant-->
+    <!--/.Liste-->
+    <div class="span9-fax" *ngIf="liste && isResto">
+        <div class="content-fax">
+            <div class="module-fax">
+                <div class="module-fax-head">
+                    <h3>Plat
+                    <a  class=" btn btn-success" style="float: right;" (click)="clickButton(null)">Ajouter</a></h3>
+                </div>
+                <div class="module-fax-body ">
+                    <table class="table table-striped align-middle">
+                      <thead>
+                        <tr>
+                          <th >Code</th>
+                          <th >Nom</th>
+                          <th >Prix de revient</th>
+                          <th >Prix de vente</th>
+                          <th >Visible</th>
+                          <th >Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let plat of plats ">
+                          <td >{{plat.code}}</td>
+                          <td >{{plat.name}}</td>
+                          <td >{{plat.pR}} AR</td>
+                          <td >{{plat.pV}} AR</td>
+                          <td ><input type="checkbox" [checked]="plat.visibility" class="inbox-checkbox"  (change)="checkValue(plat,$event)"></td>
+                          <td ><a class="btn btn-warning" (click)="infoPlat(plat._id)"><i class="menu-icon icon-book"></i></a><a class="btn btn-info" (click)="clickButton(plat._id)"><i class="menu-icon icon-edit"></i></a><a  class="btn btn-danger" (click)="deletePlat(plat._id)"><i class="menu-icon icon-trash"></i></a></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <!--/Liste-->
+    <!--/.formulaire-->
+    <div class="span9-fax" *ngIf="formulaire && isResto">
+      <div class="content-fax">
+        <div class="module-fax">
+          <div class="module-fax-head">
+            <h3 *ngIf="!isAddMode">Modifier Plat</h3>
+            <h3 *ngIf="isAddMode">Ajouter Plat</h3>
+          </div>
+          <div class="module-fax-body">
+            <form [formGroup]="form"  (submit)="submitForms()" class="form-horizontal-fax row-fax-fluid" enctype="multipart/form-data">
+                <div class="control-fax-group">
+                <label class="control-fax-label" for="basicinput">Code:</label>
+                <div class="controls-fax">
+                    <input type="text" formControlName="code" placeholder="Code" class="span8-fax" style="width: 350px;" style="width: 350px;" [attr.disabled]="info? true : null">
+                    &nbsp;&nbsp;&nbsp;<span *ngIf="submitted && form.controls.code.errors" class="text-danger">Code requis</span>
+                </div>
+                </div>
+                <div class="control-fax-group">
+                <label class="control-fax-label" for="basicinput">Nom:</label>
+                <div class="controls-fax">
+                  <input type="text" formControlName="name" placeholder="Nom" class="span8-fax" style="width: 350px;" style="width: 350px;" [attr.disabled]="info? true : null">
+                  &nbsp;&nbsp;&nbsp;<span *ngIf="submitted && form.controls.name.errors" class="text-danger">Nom requis</span>
+                </div>
+              </div>
+              <div class="control-fax-group">
+                <label class="control-fax-label" for="basicinput">Prix de revient (Ar):</label>
+                <div class="controls-fax">
+                  <input type="number" formControlName="pR"  class="span8-fax" style="width: 350px;" style="width: 350px;" [attr.disabled]="info? true : null">
+                  &nbsp;&nbsp;&nbsp;<span *ngIf="submitted && form.controls.pR.errors" class="text-danger">Prix de revient</span>
+                </div>
+              </div>
+              <div class="control-fax-group">
+                <label class="control-fax-label" for="basicinput">Prix de vente (Ar):</label>
+                <div class="controls-fax">
+                  <input type="number" formControlName="pV"  class="span8-fax" style="width: 350px;" style="width: 350px;" [attr.disabled]="info? true : null">
+                  &nbsp;&nbsp;&nbsp;<span *ngIf="submitted && form.controls.pV.errors" class="text-danger">Prix de vente</span>
+                </div>
+              </div>
+              <div class="control-fax-group">
+                <div class="controls-fax" >
+                  <button  *ngIf="(!isAddMode) && (!info)" type="submit" class="btn btn-info">Modifier</button>
+                  <button  *ngIf="isAddMode" type="submit" class="btn btn-success">Enregistrer</button>
+                  &nbsp;&nbsp;&nbsp;
+                  <a  class="btn btn-danger" (click)="annuler()">Annuler</a>
+                </div>
+              </div>
+            </form>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/.formulaire-->
+<!--/.restaurant-->
+<!--/.client-->
+    <!--/.Liste-->
+    <div class="span9-fax" *ngIf="liste && !isResto">
+      <div class="content-fax">
+          <div class="module-fax">
+              <div class="module-fax-head">
+                  <h3>Plats disponnibles</h3>
+              </div>
+              
+              <div class="module-fax-body" >
+                  <div class="row-fluid" >
+                      <div class="span6-fax" *ngFor="let plat of plats" style=" margin-bottom:10px">
+                          <div class="media-fax user-fax">
+                              <a class="media-fax-avatar pull-left" >
+                                  <img src="../../../../assets/plat.jpg">
+                              </a>
+                              <div class="media-fax-body">
+                                  <h3 class="media-fax-title">
+                                      {{plat.name}}
+                                  </h3>
+                                  <h4 class="muted">{{plat.resto.user.lastName}}</h4>
+                                  
+                                  <p><b>{{plat.pV}}&nbsp; Ar</b></p>
+                                  <div class="media-fax-option btn-group shaded-icon">
+                                    <button class="btn-success" (click)="ajouter(plat)">Ajouter</button>
+                                  </div>
+                              </div>
+                          </div> 
+                      </div>
+                  </div>
+                  <!--/.row-fluid-fax-->
+                  <br />
+                  <div class="pagination-fax pagination-fax-centered">
+                    <ul>
+                        <li><a><i class="icon-double-angle-left"></i></a></li>
+                        <li><a>1</a></li>
+                        <li><a>2</a></li>
+                        <li><a>3</a></li>
+                        <li><a><i class="icon-double-angle-right"></i></a></li>
+                    </ul>
+                </div>  
+              </div>
+          </div>
+      </div>
+      <!--/.content-->
+  </div>
+  <!--/Liste-->
+<!--/.client-->
+<!--/.LOADING-->
+<app-spinner [showSpinner]="loading"></app-spinner>
+<!--/.LOADING-->

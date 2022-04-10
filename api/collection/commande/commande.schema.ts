@@ -13,12 +13,11 @@ export const DetailTypeSchema = new mongoose.Schema({
 });
 
 export const CommandeSchema = new mongoose.Schema({
-  date: { type: Date, required: true },
-  etat: { type: Boolean, required: true },
+  date: { type: String, required: true },
+  etat: { type: String, required: true },
   detail: { type: [DetailTypeSchema], required: true },
   client: { type: userSchema, required: true },
   livreur: { type: userSchema },
-  prix_livraison: { type: Number, required: true },
   lieu_livraison: { type: String, required: true },
 });
 

@@ -21,6 +21,13 @@ class RestoController implements ControllerRead, ControllerWrite {
       next,
     );
   }
+  getByLogin(req: Request, res: Response, next: NextFunction): void {
+    wrapToSendBackResponse<Resto | null>(
+      restoService.getByLogin(req.params.restoLogin),
+      res,
+      next,
+    );
+  }
   create(req: Request, res: Response, next: NextFunction): void {
     wrapToSendBackResponse<Resto>(
       restoService.create(req.body),

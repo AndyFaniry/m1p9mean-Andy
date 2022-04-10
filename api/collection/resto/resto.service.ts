@@ -22,6 +22,9 @@ class RestoService {
     async getById(id: string): Promise<Resto | null> {
         return RestoModel.findById(id).exec();
     }
+    async getByLogin(login: string): Promise<Resto | null> {
+        return RestoModel.findOne({"user.lastName":login}).exec();
+    }
     async delete(idResto: string): Promise<boolean> {
        await this.getById(idResto).then((res)=>{
             userService.deleteByLogin(res.user.login).then(()=>true)   

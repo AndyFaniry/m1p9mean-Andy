@@ -8,11 +8,10 @@ export interface DetailType {
 
 export interface Commande {
   _id?: any;
-  date: Date;
-  etat: Boolean;
+  date: String;
+  etat: String;
   detail: DetailType[];
   client: User;
   livreur: User;
-  prix_livraison: Number;
   lieu_livraison: String;
 }

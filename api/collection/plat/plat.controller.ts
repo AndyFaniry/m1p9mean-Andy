@@ -16,7 +16,7 @@ class PlatController implements ControllerRead, ControllerWrite {
     }
     getById(req: Request, res: Response, next: NextFunction): void {
     wrapToSendBackResponse<PlatType | null>(
-      platService.getById(req.params.PlatTypeId),
+      platService.getById(req.params.platId),
       res,
       next,
     );
@@ -50,6 +50,13 @@ class PlatController implements ControllerRead, ControllerWrite {
         next,
       );
   }
+  getVisible(req: Request, res: Response, next: NextFunction): void {
+    wrapToSendBackResponse<PlatType[] | null>(
+      platService.getVisible(),
+      res,
+      next,
+    );
+}
 }
 
 export const platController = new PlatController();

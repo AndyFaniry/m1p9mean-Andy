@@ -1,0 +1,76 @@
+<!--/.Liste commande enregistrer-->
+<div class="span9-fax" >
+    <div class="content-fax">
+        <div class="module-fax">
+            <div class="module-fax-head">
+                <h3>Commandes</h3>
+            </div>
+            <div class="module-fax-body ">
+                <table class="table table-striped align-middle">
+                  <thead>
+                    <tr>
+                      <th >Nom</th>
+                      <th >Date</th>
+                      <th >Lieu de livraison</th>
+                      <th >Etat</th>
+                      <th *ngIf="user.userType.name != 'admin' ">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let commande of commandeEnregistrer ">
+                      <td >{{commande.client.lastName +" "+ commande.client.firstName}}</td>
+                      <td >{{commande.date}}</td>
+                      <td >{{commande.lieu_livraison}}</td>
+                      <td ><b class = "due">{{commande.etat}}</b></td>
+                      <td *ngIf='user.userType.name === "client"'><a (click)="detailCommande(commande)" class="btn btn-warning" ><i class="menu-icon icon-book"></i></a><a *ngIf='commande.etat === "commande"' class="btn btn-danger" (click)="deleteCommandeTerminer(commande._id)"><i class="menu-icon icon-trash"></i></a></td>
+                      <td *ngIf='user.userType.name === "restaurant" && commande.etat === "commande"' ><a (click)="changeEtat(commande)" class="btn btn-success" ><i class="menu-icon icon-check"></i></a></td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+</div>
+<!--/Liste commande enregistrer-->
+<div class="span3-fax" *ngIf='user.userType.name === "client"'></div>
+<!--/.Liste commande encours-->
+<div class="span9-fax" *ngIf='user.userType.name === "client"'>
+    <div class="content-fax">
+        <div class="module-fax">
+            <div class="module-fax-head">
+                <h3>Panier en cours
+                    <a *ngIf="commandeEncours!=null && commandeEncours.length>0"  class=" btn btn-success" style="float: right;" (click)="enregisterEncours()">Enregistrer</a>
+                </h3>
+            </div>
+            <div class="module-fax-body ">
+                <table class="table table-striped align-middle">
+                  <thead>
+                    <tr>
+                      <th >Plat</th>
+                      <th >Restaurant</th>
+                      <th >Quantité</th>
+                      <th >Prix</th>
+                      <th >Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let commande of commandeEncours">
+                      <td >{{commande.plat.name}}</td>
+                      <td >{{commande.plat.resto.user.lastName}}</td>
+                      <td >{{commande.qty}}</td>
+                      <td >{{commande.plat.pV}} AR</td>
+                      <td ><a class="btn btn-danger" (click)="deleteCommandeEncours(commande.plat)"><i class="menu-icon icon-trash"></i></a></td>
+                    </tr>
+                  </tbody>
+                </table>
+                
+            </div>
+        </div>
+    </div>
+    
+</div>
+<!--/Liste commande encours-->
+<!--/.LOADING-->
+<app-spinner [showSpinner]="loading"></app-spinner>
+<!--/.LOADING-->

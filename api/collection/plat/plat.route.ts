@@ -18,11 +18,25 @@ class PlatRoute {
             passport.authenticate("jwt", { session: false }),
             platController.getAll.bind(platController),
         )
-        .post(platController.create.bind(platController))
-        .put(platController.update.bind(platController))
+        .post(
+            passport.authenticate("jwt", { session: false }),
+            platController.create.bind(platController),
+            )
+        .put(
+            passport.authenticate("jwt", { session: false }),
+            platController.update.bind(platController)
+            )
         .delete(
             passport.authenticate("jwt", { session: false }),
             platController.delete.bind(platController),
+        );
+        this.router.route("/visible").get(
+            passport.authenticate("jwt", { session: false }),
+            platController.getVisible.bind(platController),
+        );
+        this.router.route("/resto/:restoId").get(
+            passport.authenticate("jwt", { session: false }),
+            platController.getByResto.bind(platController),
         );
         this.router
         .route("/:platId")
@@ -34,11 +48,7 @@ class PlatRoute {
         .delete(
             passport.authenticate("jwt", { session: false }),
             platController.delete.bind(platController),
-        );
-        this.router.route("/resto/:restoId").get(
-            passport.authenticate("jwt", { session: false }),
-            platController.getByResto.bind(platController),
-        );
+        );  
     }
 }
 const platRoute = new PlatRoute();

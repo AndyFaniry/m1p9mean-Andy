@@ -17,7 +17,7 @@ export class AdminComponent implements OnInit {
   public type: string;
   
   ngOnInit(): void {
-    this.user = localStorage.getItem('user') as User;
+    this.user = JSON.parse(localStorage.getItem('user')) as User;
     this.type = this.activeRoute.snapshot.paramMap.get('type');
     if(this.user===null){
       this.route.navigate(['app/']);

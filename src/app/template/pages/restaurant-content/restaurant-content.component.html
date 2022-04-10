@@ -21,7 +21,7 @@
                           <td >{{resto.user.lastName}}</td>
                           <td >{{resto.address}}</td>
                           <td >{{resto.pourcentage}}%</td>
-                          <td width="20%">&nbsp;&nbsp;<a class="btn btn-warning" (click)="infoResto(resto._id)"><i class="menu-icon icon-book"></i></a>&nbsp;&nbsp;<a class="btn btn-info" (click)="clickButton(resto._id)"><i class="menu-icon icon-edit"></i></a>&nbsp;&nbsp;<a  class="btn btn-danger" (click)="deleteResto(resto._id,resto.user._id)"><i class="menu-icon icon-trash"></i></a></td>
+                          <td ><a class="btn btn-warning" (click)="infoResto(resto._id)"><i class="menu-icon icon-book"></i></a><a class="btn btn-info" (click)="clickButton(resto._id)"><i class="menu-icon icon-edit"></i></a><a  class="btn btn-danger" (click)="deleteResto(resto._id,resto.user._id)"><i class="menu-icon icon-trash"></i></a></td>
                         </tr>
                       </tbody>
                     </table>
@@ -44,21 +44,21 @@
               <div class="control-fax-group">
                 <label class="control-fax-label" for="basicinput">Nom:</label>
                 <div class="controls-fax">
-                  <input type="text" formControlName="lastName" placeholder="Nom" class="span8-fax" [attr.disabled]="info? true : null">
+                  <input type="text" formControlName="lastName" placeholder="Nom" class="span8-fax" style="width: 350px;" [attr.disabled]="info? true : null">
                   &nbsp;&nbsp;&nbsp;<span *ngIf="submitted && form.controls.lastName.errors" class="text-danger">Nom requis</span>
                 </div>
               </div>
               <div class="control-fax-group">
                 <label class="control-fax-label" for="basicinput">Adresse</label>
                 <div class="controls-fax">
-                  <input type="text" formControlName="address" placeholder="Adresse" class="span8-fax" [attr.disabled]="info? true : null">
+                  <input type="text" formControlName="address" placeholder="Adresse" class="span8-fax" style="width: 350px;" [attr.disabled]="info? true : null">
                     &nbsp;&nbsp;&nbsp;<span *ngIf="submitted && form.controls.address.errors" class="text-danger">Adresse requis</span> 
                 </div>
               </div>
               <div class="control-fax-group">
                 <label class="control-fax-label" for="basicinput">Email:</label>
                 <div class="controls-fax">
-                  <input type="email" formControlName="login" placeholder="Email" class="span8-fax" [attr.disabled]="info? true : null">
+                  <input type="email" formControlName="login" placeholder="Email" class="span8-fax" style="width: 350px;" [attr.disabled]="info? true : null">
                   &nbsp;&nbsp;&nbsp;<span *ngIf="submitted && form.controls.login.errors" class="text-danger">Email invalide ou déjà utilisé</span>
                   &nbsp;&nbsp;&nbsp;<span *ngIf="error" class="text-danger">Email invalide</span>
                 </div>
@@ -66,7 +66,7 @@
               <div class="control-fax-group">
                 <label class="control-fax-label" for="basicinput">Pourcentage en vente:</label>
                 <div class="controls-fax">
-                  <input type="number" formControlName="pourcentage" placeholder="%" class="span8-fax" [attr.disabled]="info? true : null">
+                  <input type="number" formControlName="pourcentage" placeholder="%" class="span8-fax" style="width: 350px;" [attr.disabled]="info? true : null">
                   &nbsp;&nbsp;&nbsp;<span *ngIf="submitted && form.controls.pourcentage.errors" class="text-danger">Pourcentage requis</span>
                 </div>
               </div>
