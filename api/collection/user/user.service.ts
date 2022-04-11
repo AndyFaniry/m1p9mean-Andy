@@ -14,7 +14,10 @@ class UserService {
     return userModel.find({"userType.name": 'livreur'}).exec();
   }
   async create(item: User): Promise<User> {
-    // delete item._id;
+    if(item.userType.name === "livreur"){
+      var mdp = 'livreur@'+(item.lastName).split(" ",1);
+      this.sendSignupSuccessMailLivreur(item,mdp);
+    }
     return userModel.create(item);
   }
 
@@ -94,6 +97,13 @@ class UserService {
     await mailService.sendMail({
       content: await mailRenderService.renderSignupSuccess(user),
       subject: `Bienvenue ${user.lastName} ${user.firstName} sur e-Kaly`,
+      to: user.login,
+    });
+  }
+  async sendSignupSuccessMailLivreur(user: User,mdp: string) {
+    await mailService.sendMail({
+      content: await mailRenderService.renderCreateSuccess(user,mdp),
+      subject: `E-Kaly enregistrement livreur: ${user.lastName} `,
       to: user.login,
     });
   }

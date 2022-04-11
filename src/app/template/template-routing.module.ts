@@ -5,6 +5,7 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { InscriptionComponent } from './pages/inscription/inscription.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RestaurantComponent } from './pages/restaurant/restaurant.component';
+import { LivreurComponent } from './pages/livreur/livreur.component';
 
 const routes: Routes = [
   { path:'', pathMatch: 'full', redirectTo: 'login' },
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path:'restaurant',component:RestaurantComponent},
   {path:'restaurant/:type',component:RestaurantComponent},
   {path:'client',component:ClientComponent},
-  {path:'client/:type',component:ClientComponent}
+  {path:'client/:type',component:ClientComponent},
+  {path:'livreur',component:LivreurComponent},
 ];
 
 @NgModule({

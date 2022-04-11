@@ -1,0 +1,31 @@
+<app-navbar></app-navbar>
+<section class="vh-100 gradient-custom">
+    <div class="container-fax">
+      <div class="row-fax">
+        <app-sidebar ></app-sidebar>
+        <div class="span9-fax">
+            <div class="content-fax">
+                <div class="module-fax">
+                    <div class="module-fax-head">
+                        <h3>Livraisons</h3>
+                    </div>
+                    <div class="module-fax-body ">
+                        <ejs-kanban #kanbanObj keyField='etat' [dataSource]='data' [cardSettings]='cardSettings' (dataStateChange)= 'dataStateChange($event)' >
+                            <e-columns>
+                                <e-column headerText='En cours' keyField='en cours'></e-column>
+                                <e-column headerText='En cours de livraison' keyField='livraison'></e-column>
+                                <e-column headerText='Livrés' keyField='termine'></e-column>
+                            </e-columns>
+                        </ejs-kanban>`
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+   </div>
+</section>
+<!--/.LOADING-->
+<app-spinner [showSpinner]="loading"></app-spinner>
+<!--/.LOADING-->
+
+<app-footer text_color="white" div_color="#2d2b32"></app-footer>

@@ -74,7 +74,6 @@ export class LivreurContentComponent implements OnInit {
     };
     if (this.isAddMode) {
          livr.password = bcrypt.hashSync("livreur@"+(livr.lastName).split(" ",1), 10);
-        console.log(livr.password);
         var val = this.alertService.confirmation('question','Enregistrer','Voulez-vous enregistrer?');  
         val.then((result) => {
           if (result.value) {

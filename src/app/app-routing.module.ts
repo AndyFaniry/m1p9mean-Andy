@@ -9,9 +9,12 @@ const routes: Routes = [
     path: 'app',
     loadChildren: async () => (await import('./template/template.module')).TemplateModule
   },
+  { 
+    path: '',   redirectTo: 'app', pathMatch: 'full' 
+  },
   {
     path: '**', component:NotfoundComponent
-  }
+  },
 ];
 
 @NgModule({

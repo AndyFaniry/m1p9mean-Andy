@@ -17,6 +17,8 @@ import { LivreurContentComponent } from './pages/livreur-content/livreur-content
 import { PlatContentComponent } from './pages/plat-content/plat-content.component';
 import { CommandeContentComponent } from './pages/commande-content/commande-content.component';
 import { ClientComponent } from './pages/client/client.component';
+import { LivreurComponent } from './pages/livreur/livreur.component';
+import { KanbanModule } from '@syncfusion/ej2-angular-kanban';
 
 @NgModule({
   declarations: [
@@ -34,13 +36,14 @@ import { ClientComponent } from './pages/client/client.component';
     PlatContentComponent,
     CommandeContentComponent,
     ClientComponent,
+    LivreurComponent,
   ],
   imports: [
     CommonModule,
     TemplateRoutingModule,
     ReactiveFormsModule,
     ApiModule,
-   
+    KanbanModule
   ]
 })
 export class TemplateModule { }

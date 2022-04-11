@@ -27,7 +27,7 @@ export class SidebarComponent implements OnInit {
     {'url':'app/restaurant/benefice','icon':'icon-money','libelle':'Bénéfices'},
   ];
   public livreur: any=[
-    {'url':'','icon':'','libelle':''},
+    {'url':'app/livreur','icon':'icon-user','libelle':'Livraisons'},
   ];
   public menus: any;
   public entet: String;
